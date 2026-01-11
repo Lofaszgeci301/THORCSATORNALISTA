@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>0.8 Thor magyar csatornalista</title>
+    <title>0.8 Thor magyar csatornalista - 2026</title>
     <style>
         * {
             margin: 0;
@@ -131,46 +131,30 @@
             background: #f8f9fa;
             padding: 20px;
             text-align: center;
-            border-top: 2px solid #e9ecef;
             color: #666;
+            border-top: 2px solid #e9ecef;
         }
         
         .hidden {
-            display: none;
-        }
-        
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 5px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #764ba2;
+            display: none !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📺 0.8 Thor magyar csatornalista</h1>
-            <p>134 csatorna</p>
+            <h1>📡 0.8°W Thor Magyar Csatornalista</h1>
+            <p>Frissítve: 2026. január</p>
         </div>
         
         <div class="search-box">
-            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Keresés csatorna neve vagy frekvencia szerint...">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Keresés csatorna neve vagy frekvencia alapján...">
         </div>
         
-        <div class="content" id="content">
+        <div class="content">
+
             <div class="category" data-category="KERESKEDELMI">
-                <div class="category-title">🏢 KERESKEDELMI</div>
+                <div class="category-title">📺 KERESKEDELMI</div>
                 <div class="channel-list">
                     <div class="channel"><span class="channel-number">1.</span><span class="channel-name">M1 HD</span><span class="channel-freq">11.823 GHz</span></div>
                     <div class="channel"><span class="channel-number">2.</span><span class="channel-name">M2/Petofi TV HD</span><span class="channel-freq">12.034 GHz</span></div>
@@ -182,7 +166,7 @@
                     <div class="channel"><span class="channel-number">8.</span><span class="channel-name">RTL KETTO HD</span><span class="channel-freq">12.034 GHz</span></div>
                     <div class="channel"><span class="channel-number">9.</span><span class="channel-name">RTL Harom HD</span><span class="channel-freq">12.034 GHz</span></div>
                     <div class="channel"><span class="channel-number">10.</span><span class="channel-name">RTL OTTHON</span><span class="channel-freq">11.996 GHz</span></div>
-                    <div class="channel"><span class="channel-number">11.</span><span class="channel-name">RTL OTTHON HD</span><span class="channel-freq">12.149 GHz</span></div>
+                    <div class="channel"><span class="channel-number">11.</span><span class="channel-name">RTL OTTHON</span><span class="channel-freq">12.149 GHz</span></div>
                     <div class="channel"><span class="channel-number">12.</span><span class="channel-name">Super TV2</span><span class="channel-freq">12.187 GHz</span></div>
                     <div class="channel"><span class="channel-number">13.</span><span class="channel-name">TV2Klub</span><span class="channel-freq">12.265 GHz</span></div>
                     <div class="channel"><span class="channel-number">14.</span><span class="channel-name">Cool</span><span class="channel-freq">12.265 GHz</span></div>
@@ -195,9 +179,9 @@
                     <div class="channel"><span class="channel-number">21.</span><span class="channel-name">TV2 Comedy</span><span class="channel-freq">11.919 GHz</span></div>
                 </div>
             </div>
-            
+
             <div class="category" data-category="FILMCSATORNAK">
-                <div class="category-title">🎬 FILMCSATORNÁK</div>
+                <div class="category-title">🎬 FILM</div>
                 <div class="channel-list">
                     <div class="channel"><span class="channel-number">22.</span><span class="channel-name">Sorozatklub</span><span class="channel-freq">12.265 GHz</span></div>
                     <div class="channel"><span class="channel-number">23.</span><span class="channel-name">Sorozat+</span><span class="channel-freq">11.958 GHz</span></div>
@@ -242,9 +226,9 @@
                     <div class="channel"><span class="channel-number">62.</span><span class="channel-name">Hir TV</span><span class="channel-freq">12.130 GHz</span></div>
                 </div>
             </div>
-            
+
             <div class="category" data-category="TERMESZETFILMEK">
-                <div class="category-title">🌍 TERMÉSZETFILMEK</div>
+                <div class="category-title">🌍 TERMÉSZET & DOKUMENTUM</div>
                 <div class="channel-list">
                     <div class="channel"><span class="channel-number">63.</span><span class="channel-name">ID Investigation Discovery</span><span class="channel-freq">11.785 GHz</span></div>
                     <div class="channel"><span class="channel-number">64.</span><span class="channel-name">Discovery HU</span><span class="channel-freq">11.785 GHz</span></div>
@@ -271,7 +255,7 @@
                     <div class="channel"><span class="channel-number">85.</span><span class="channel-name">Food Network</span><span class="channel-freq">12.687 GHz</span></div>
                 </div>
             </div>
-            
+
             <div class="category" data-category="MESE">
                 <div class="category-title">🧸 GYEREK & MESE</div>
                 <div class="channel-list">
@@ -281,7 +265,7 @@
                     <div class="channel"><span class="channel-number">89.</span><span class="channel-name">Minimax</span><span class="channel-freq">11.785 GHz</span></div>
                     <div class="channel"><span class="channel-number">90.</span><span class="channel-name">TV2 Kids</span><span class="channel-freq">11.919 GHz</span></div>
                     <div class="channel"><span class="channel-number">91.</span><span class="channel-name">Kolyokklub</span><span class="channel-freq">11.996 GHz</span></div>
-                    <div class="channel"><span class="channel-number">92.</span><span class="channel-name">Kolyokklub HD</span><span class="channel-freq">12.149 GHz</span></div>
+                    <div class="channel"><span class="channel-number">92.</span><span class="channel-name">Kolyokklub</span><span class="channel-freq">12.149 GHz</span></div>
                     <div class="channel"><span class="channel-number">93.</span><span class="channel-name">Nick Jr Hungary</span><span class="channel-freq">12.073 GHz</span></div>
                     <div class="channel"><span class="channel-number">94.</span><span class="channel-name">Nicktoons Hungary</span><span class="channel-freq">12.073 GHz</span></div>
                     <div class="channel"><span class="channel-number">95.</span><span class="channel-name">Nickelodeon Hungary</span><span class="channel-freq">12.073 GHz</span></div>
@@ -290,7 +274,7 @@
                     <div class="channel"><span class="channel-number">98.</span><span class="channel-name">Cartoon Network</span><span class="channel-freq">11.919 GHz</span></div>
                 </div>
             </div>
-            
+
             <div class="category" data-category="ZENE">
                 <div class="category-title">🎵 ZENE</div>
                 <div class="channel-list">
@@ -304,7 +288,7 @@
                     <div class="channel"><span class="channel-number">106.</span><span class="channel-name">MTV Europe</span><span class="channel-freq">12.226 GHz</span></div>
                 </div>
             </div>
-            
+
             <div class="category" data-category="SPORT">
                 <div class="category-title">⚽ SPORT</div>
                 <div class="channel-list">
@@ -326,35 +310,36 @@
                     <div class="channel"><span class="channel-number">122.</span><span class="channel-name">DIGI Sport 4</span><span class="channel-freq">12.687 GHz</span></div>
                 </div>
             </div>
-            
+
             <div class="category" data-category="PORNO">
                 <div class="category-title">🔞 FELNŐTT</div>
                 <div class="channel-list">
-                    <div class="channel"><span class="channel-number">123.</span><span class="channel-name">Hustler TV</span><span class="channel-freq">12.265 GHz</span></div>
-                    <div class="channel"><span class="channel-number">124.</span><span class="channel-name">Hustler</span><span class="channel-freq">12.265 GHz</span></div>
-                    <div class="channel"><span class="channel-number">125.</span><span class="channel-name">SuperOne</span><span class="channel-freq">12.723 GHz</span></div>
-                    <div class="channel"><span class="channel-number">126.</span><span class="channel-name">EroXXX</span><span class="channel-freq">12.111 GHz</span></div>
-                    <div class="channel"><span class="channel-number">127.</span><span class="channel-name">Private TV</span><span class="channel-freq">12.265 GHz</span></div>
+                    <div class="channel"><span class="channel-number">123.</span><span class="channel-name">Vixen HD</span><span class="channel-freq">12.111 GHz</span></div>
+                    <div class="channel"><span class="channel-number">124.</span><span class="channel-name">Hustler TV</span><span class="channel-freq">12.265 GHz</span></div>
+                    <div class="channel"><span class="channel-number">125.</span><span class="channel-name">Hustler</span><span class="channel-freq">12.265 GHz</span></div>
+                    <div class="channel"><span class="channel-number">126.</span><span class="channel-name">SuperOne</span><span class="channel-freq">12.723 GHz</span></div>
+                    <div class="channel"><span class="channel-number">127.</span><span class="channel-name">EroXXX</span><span class="channel-freq">12.111 GHz</span></div>
                     <div class="channel"><span class="channel-number">128.</span><span class="channel-name">Private TV</span><span class="channel-freq">12.265 GHz</span></div>
+                    <div class="channel"><span class="channel-number">129.</span><span class="channel-name">Private TV</span><span class="channel-freq">12.265 GHz</span></div>
                 </div>
             </div>
-            
+
             <div class="category" data-category="HIREK">
                 <div class="category-title">📰 HÍREK</div>
                 <div class="channel-list">
-                    <div class="channel"><span class="channel-number">129.</span><span class="channel-name">CNN</span><span class="channel-freq">11.958 GHz</span></div>
-                    <div class="channel"><span class="channel-number">130.</span><span class="channel-name">CNBC Europe</span><span class="channel-freq">12.149 GHz</span></div>
-                    <div class="channel"><span class="channel-number">131.</span><span class="channel-name">Al Jazeera English</span><span class="channel-freq">12.418 GHz</span></div>
-                    <div class="channel"><span class="channel-number">132.</span><span class="channel-name">Docubox</span><span class="channel-freq">12.111 GHz</span></div>
-                    <div class="channel"><span class="channel-number">133.</span><span class="channel-name">CGTN Documentary HD</span><span class="channel-freq">12.418 GHz</span></div>
-                    <div class="channel"><span class="channel-number">134.</span><span class="channel-name">CGTN HD</span><span class="channel-freq">12.418 GHz</span></div>
+                    <div class="channel"><span class="channel-number">130.</span><span class="channel-name">CNN</span><span class="channel-freq">11.958 GHz</span></div>
+                    <div class="channel"><span class="channel-number">131.</span><span class="channel-name">CNBC Europe</span><span class="channel-freq">12.149 GHz</span></div>
+                    <div class="channel"><span class="channel-number">132.</span><span class="channel-name">Al Jazeera English</span><span class="channel-freq">12.418 GHz</span></div>
+                    <div class="channel"><span class="channel-number">133.</span><span class="channel-name">Docubox</span><span class="channel-freq">12.111 GHz</span></div>
+                    <div class="channel"><span class="channel-number">134.</span><span class="channel-name">CGTN Documentary HD</span><span class="channel-freq">12.418 GHz</span></div>
+                    <div class="channel"><span class="channel-number">135.</span><span class="channel-name">CGTN HD</span><span class="channel-freq">12.418 GHz</span></div>
                 </div>
             </div>
             
         </div>
         
         <div class="footer">
-            <strong>134 csatorna</strong>
+            <strong>135 csatorna</strong>
         </div>
     </div>
     
