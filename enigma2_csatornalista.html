@@ -3,184 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thor 0.8°W magyar csatornalista - 2026</title>
+    <title>Thor 0.8°W magyar csatornalista</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 15px;
+            padding: 8px;
             min-height: 100vh;
-            font-size: 13px;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             overflow: hidden;
         }
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 12px 20px;
+            padding: 10px;
             text-align: center;
         }
-        .header h1 {
-            font-size: 20px;
-            margin-bottom: 3px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .header p { 
-            font-size: 11px; 
-            opacity: 0.9; 
-        }
+        .header h1 { font-size: 16px; margin-bottom: 2px; }
+        .header p { font-size: 10px; opacity: 0.9; }
         .search-box {
-            padding: 10px 15px;
+            padding: 8px;
             background: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
         }
         .search-input {
             width: 100%;
-            padding: 8px 12px;
-            font-size: 12px;
+            padding: 8px;
+            font-size: 14px;
             border: 2px solid #ddd;
             border-radius: 5px;
             outline: none;
-            transition: border-color 0.3s;
         }
         .search-input:focus { border-color: #667eea; }
         .content {
-            padding: 12px 18px;
-            max-height: calc(100vh - 150px);
+            padding: 8px;
+            max-height: calc(100vh - 120px);
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
-        .category { margin-bottom: 18px; }
+        .category { margin-bottom: 10px; }
         .category-title {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 6px 12px;
-            border-radius: 5px;
-            font-size: 13px;
+            padding: 6px 8px;
+            border-radius: 4px;
+            font-size: 12px;
             font-weight: bold;
-            margin-bottom: 8px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            margin-bottom: 5px;
         }
         .channel {
             background: #f8f9fa;
-            padding: 6px 10px;
-            margin-bottom: 3px;
+            padding: 5px 6px;
+            margin-bottom: 2px;
             border-radius: 4px;
             border-left: 3px solid #667eea;
-            transition: all 0.2s;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .channel:hover {
-            background: #e9ecef;
-            transform: translateX(3px);
+            gap: 2px;
         }
         .channel-name {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: #333;
             flex: 0 0 auto;
-            min-width: 200px;
-            max-width: 300px;
+            max-width: 35%;
+            min-width: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .channel-freq {
             font-size: 10px;
-            color: #666;
-            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: #555;
             flex: 1 1 auto;
             text-align: right;
-            white-space: nowrap;
-        }
-        .freq-badge {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 1px 5px;
-            border-radius: 2px;
-            font-size: 9px;
-            margin-left: 3px;
-        }
-        .freq-text {
-            font-size: 10px;
-            color: #666;
-            margin-left: 5px;
         }
         .hidden { display: none; }
         .stats {
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-            padding: 12px;
+            background: #f0f0f0;
+            padding: 8px;
             border-radius: 5px;
-            margin-top: 15px;
+            margin-top: 10px;
         }
         .stats-title {
             color: #764ba2;
-            font-size: 14px;
-            margin-bottom: 8px;
+            font-size: 12px;
+            margin-bottom: 5px;
             font-weight: bold;
         }
         .stat-item {
             display: inline-block;
-            margin-right: 18px;
-            margin-bottom: 6px;
-            font-size: 11px;
+            margin-right: 10px;
+            font-size: 10px;
         }
         .stat-item strong { color: #667eea; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-            margin-top: 10px;
+        
+        @media (min-width: 769px) {
+            .header h1 { font-size: 20px; }
+            .channel-name { font-size: 13px; max-width: 30%; min-width: 150px; }
+            .channel-freq { font-size: 11px; }
         }
-        thead tr {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        
+        @media (max-width: 768px) {
+            .search-input { font-size: 16px; }
+            .channel { gap: 1px; }
+            .channel-name { max-width: 30%; min-width: 70px; }
         }
-        th { padding: 6px; border: 1px solid #ddd; font-size: 11px; }
-        td { padding: 5px; border: 1px solid #ddd; }
-        tbody tr:nth-child(odd) { background: #f8f9fa; }
-        h2 { font-size: 15px; }
-        h3 { font-size: 13px; }
-        .info-box {
-            margin-top: 15px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-left: 3px solid #667eea;
-            border-radius: 4px;
-        }
-        .info-box h3 {
-            color: #667eea;
-            margin-bottom: 6px;
-        }
-        .info-box ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .info-box li {
-            margin-bottom: 4px;
-            font-size: 11px;
-        }
-        .notes-box {
-            margin-top: 12px;
-            padding: 10px;
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-            border-radius: 4px;
-        }
-        .notes-box h3 {
-            color: #764ba2;
-            margin-bottom: 6px;
-        }
-        .notes-box ul {
-            font-size: 10px;
-            color: #555;
-            line-height: 1.5;
+        
+        @media (max-width: 400px) {
+            .channel-name { max-width: 28%; font-size: 10px; }
+            .channel-freq { font-size: 9px; }
         }
     </style>
 </head>
@@ -188,581 +128,581 @@
     <div class="container">
         <div class="header">
             <h1>📡 Thor 0.8°W magyar csatornalista</h1>
-            <p>Enigma2 • 2026 • 135 csatorna • 8 kategória</p>
+            <p>Enigma2 • 2026 • 135 csatorna</p>
         </div>
         <div class="search-box">
-            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Keresés csatorna nevére vagy frekvenciára...">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Keresés...">
         </div>
         <div class="content">
             <div class="category">
-                <div class="category-title">📺 KERESKEDELMI (21 csatorna)</div>
+                <div class="category-title">📺 KERESKEDELMI (21)</div>
                 <div class="channel">
                     <div class="channel-name">M1 HD</div>
-                    <div class="channel-freq"><span class="freq-badge">11.823 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 30000 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">11.823 H 30000 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">M2/Petofi TV HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Duna HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.149 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.149 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Duna World/M4 Sport+</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">TV2 HD</div>
-                    <div class="channel-freq"><span class="freq-badge">11.823 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 30000 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">11.823 H 30000 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">RTL HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">RTL KETTO</div>
-                    <div class="channel-freq"><span class="freq-badge">11.958 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.958 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">RTL KETTO HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">RTL Harom HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">RTL OTTHON</div>
-                    <div class="channel-freq"><span class="freq-badge">11.996 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.996 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">RTL OTTHON HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.149 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.149 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Super TV2</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">TV2Klub</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Cool</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Life TV</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Viasat 2</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Viasat3</div>
-                    <div class="channel-freq"><span class="freq-badge">11.727 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.727 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Viasat6</div>
-                    <div class="channel-freq"><span class="freq-badge">11.727 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.727 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Viasat Film</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Prime</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">TV2 Comedy</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
             </div>
 
             <div class="category">
-                <div class="category-title">📺 FILMCSATORNAK (41 csatorna)</div>
+                <div class="category-title">📺 FILMCSATORNAK (41)</div>
                 <div class="channel">
                     <div class="channel-name">Sorozatklub</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Sorozat+</div>
-                    <div class="channel-freq"><span class="freq-badge">11.958 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.958 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Moziklub</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Moziverzum</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Mozi+</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Film+</div>
-                    <div class="channel-freq"><span class="freq-badge">11.727 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.727 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Film+ HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.111 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.111 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">CANAL+ Action HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.111 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.111 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Epic Drama HD</div>
-                    <div class="channel-freq"><span class="freq-badge">11.977 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">11.977 H 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">HBO HU</div>
-                    <div class="channel-freq"><span class="freq-badge">11.785 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.785 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">HBO Romania</div>
-                    <div class="channel-freq"><span class="freq-badge">11.900 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">11.900 H 28000 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">HBO2</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">HBO 2</div>
-                    <div class="channel-freq"><span class="freq-badge">11.785 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.785 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">HBO 3 HU</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">HBO 3 RO</div>
-                    <div class="channel-freq"><span class="freq-badge">12.687 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.687 H 27500 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Cinemax</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Cinemax</div>
-                    <div class="channel-freq"><span class="freq-badge">12.723 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.723 H 27500 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Cinemax2</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Magyar Mozi TV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">AMC HU</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">AXN CE</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">AXN Black</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">AXN White</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Filmbox Extra HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Filmbox Family</div>
-                    <div class="channel-freq"><span class="freq-badge">11.727 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.727 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Filmbox Stars</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">FilmBox Premium</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">FilmBox Basic</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Film Mania</div>
-                    <div class="channel-freq"><span class="freq-badge">11.996 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.996 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Film Cafe</div>
-                    <div class="channel-freq"><span class="freq-badge">11.727 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.727 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">RTL GOLD</div>
-                    <div class="channel-freq"><span class="freq-badge">11.958 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.958 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Film 4</div>
-                    <div class="channel-freq"><span class="freq-badge">12.130 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.130 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">TV4</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Max4</div>
-                    <div class="channel-freq"><span class="freq-badge">12.130 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.130 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">STORY 4</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Galaxy4</div>
-                    <div class="channel-freq"><span class="freq-badge">12.130 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.130 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Izaura TV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Jocky TV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Magyar ATV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">ATV Extra</div>
-                    <div class="channel-freq"><span class="freq-badge">11.958 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.958 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Hir TV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.130 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.130 H 28000 7/8</div>
                 </div>
             </div>
 
             <div class="category">
-                <div class="category-title">📺 TERMESZETFILMEK (22 csatorna)</div>
+                <div class="category-title">📺 TERMESZETFILMEK (22)</div>
                 <div class="channel">
                     <div class="channel-name">ID Investigation Discovery</div>
-                    <div class="channel-freq"><span class="freq-badge">11.785 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.785 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Discovery HU</div>
-                    <div class="channel-freq"><span class="freq-badge">11.785 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.785 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Animal Planet</div>
-                    <div class="channel-freq"><span class="freq-badge">12.130 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.130 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Nat Geo Wild</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Nat Geo Wild HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Nat Geo HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.111 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.111 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">BBC Earth HD</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Love Nature HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">History Hungary</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Viasat History HU</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Viasat Nature</div>
-                    <div class="channel-freq"><span class="freq-badge">12.130 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.130 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Viasat Explore</div>
-                    <div class="channel-freq"><span class="freq-badge">11.785 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.785 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Travel Channel</div>
-                    <div class="channel-freq"><span class="freq-badge">11.785 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.785 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Spektrum</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Spektrum Home</div>
-                    <div class="channel-freq"><span class="freq-badge">11.785 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.785 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">HGTV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.723 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.723 H 27500 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Ozone TV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Fashion TV</div>
-                    <div class="channel-freq"><span class="freq-badge">11.785 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.785 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">TLC</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">TV Paprika</div>
-                    <div class="channel-freq"><span class="freq-badge">11.727 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.727 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">TV2 Sef</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Food Network</div>
-                    <div class="channel-freq"><span class="freq-badge">12.687 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.687 H 27500 3/4</div>
                 </div>
             </div>
 
             <div class="category">
-                <div class="category-title">📺 MESE (13 csatorna)</div>
+                <div class="category-title">📺 MESE (13)</div>
                 <div class="channel">
                     <div class="channel-name">DaVinci Learning</div>
-                    <div class="channel-freq"><span class="freq-badge">12.723 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.723 H 27500 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">ducktv</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">JimJam HU</div>
-                    <div class="channel-freq"><span class="freq-badge">11.727 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.727 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Minimax</div>
-                    <div class="channel-freq"><span class="freq-badge">11.785 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.785 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">TV2 Kids</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Kolyokklub</div>
-                    <div class="channel-freq"><span class="freq-badge">11.996 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.996 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Kolyokklub HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.149 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.149 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Nicktoons Hungary</div>
-                    <div class="channel-freq"><span class="freq-badge">12.226 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 27500 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">12.226 V 27500 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Nick Junior Hungary</div>
-                    <div class="channel-freq"><span class="freq-badge">12.226 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 27500 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">12.226 V 27500 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Nickelodeon Hungary</div>
-                    <div class="channel-freq"><span class="freq-badge">12.226 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 27500 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">12.226 V 27500 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Disney Channel</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Cartoonito</div>
-                    <div class="channel-freq"><span class="freq-badge">11.938 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.938 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Cartoon Network</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
             </div>
 
             <div class="category">
-                <div class="category-title">📺 ZENE (8 csatorna)</div>
+                <div class="category-title">📺 ZENE (8)</div>
                 <div class="channel">
                     <div class="channel-name">Mezzo</div>
-                    <div class="channel-freq"><span class="freq-badge">12.687 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.687 H 27500 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Dikh TV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.130 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.130 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Zenebutik</div>
-                    <div class="channel-freq"><span class="freq-badge">11.919 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.919 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Slager TV</div>
-                    <div class="channel-freq"><span class="freq-badge">11.900 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">11.900 H 28000 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Muzsika TV</div>
-                    <div class="channel-freq"><span class="freq-badge">11.958 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.958 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">U tv</div>
-                    <div class="channel-freq"><span class="freq-badge">12.687 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.687 H 27500 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Music Channel</div>
-                    <div class="channel-freq"><span class="freq-badge">11.900 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">11.900 H 28000 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">MTV Europe</div>
-                    <div class="channel-freq"><span class="freq-badge">12.226 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 27500 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">12.226 V 27500 5/6</div>
                 </div>
             </div>
 
             <div class="category">
-                <div class="category-title">📺 SPORT (16 csatorna)</div>
+                <div class="category-title">📺 SPORT (16)</div>
                 <div class="channel">
                     <div class="channel-name">Fishing&Hunting</div>
-                    <div class="channel-freq"><span class="freq-badge">11.900 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">11.900 H 28000 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Spiler 1</div>
-                    <div class="channel-freq"><span class="freq-badge">12.130 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.130 H 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Spiler2 TV</div>
-                    <div class="channel-freq"><span class="freq-badge">11.727 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.727 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Eurosport 1 HD</div>
-                    <div class="channel-freq"><span class="freq-badge">11.977 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">11.977 H 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Eurosport 2 HD</div>
-                    <div class="channel-freq"><span class="freq-badge">11.977 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">11.977 H 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Sport 1 HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Sport2 HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">MATCH4 HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.187 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.187 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Arena 4 HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.149 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.149 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">M4 Sport HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.149 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.149 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">M5 HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.034 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.034 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">FightBox</div>
-                    <div class="channel-freq"><span class="freq-badge">12.111 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.111 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">DIGI Sport 1 HD RO</div>
-                    <div class="channel-freq"><span class="freq-badge">11.823 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 30000 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">11.823 H 30000 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">DIGI Sport 2 HD RO</div>
-                    <div class="channel-freq"><span class="freq-badge">11.823 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 30000 kS/s • FEC: 5/6</span></div>
+                    <div class="channel-freq">11.823 H 30000 5/6</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">DIGI Sport 3</div>
-                    <div class="channel-freq"><span class="freq-badge">12.687 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.687 H 27500 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">DIGI Sport 4</div>
-                    <div class="channel-freq"><span class="freq-badge">12.687 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.687 H 27500 3/4</div>
                 </div>
             </div>
 
             <div class="category">
-                <div class="category-title">📺 PORNO (8 csatorna)</div>
+                <div class="category-title">📺 PORNO (8)</div>
                 <div class="channel">
                     <div class="channel-name">Blue Hustler</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Hustler TV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Hustler</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Vixen HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.111 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.111 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">SuperOne</div>
-                    <div class="channel-freq"><span class="freq-badge">12.723 GHz</span><span class="freq-badge">H</span><span class="freq-text">SR: 27500 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.723 H 27500 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">EroXXX</div>
-                    <div class="channel-freq"><span class="freq-badge">12.111 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.111 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Private TV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Private TV</div>
-                    <div class="channel-freq"><span class="freq-badge">12.265 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.265 V 28000 7/8</div>
                 </div>
             </div>
 
             <div class="category">
-                <div class="category-title">📺 HIREK (6 csatorna)</div>
+                <div class="category-title">📺 HIREK (6)</div>
                 <div class="channel">
                     <div class="channel-name">CNN</div>
-                    <div class="channel-freq"><span class="freq-badge">11.958 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">11.958 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">CNBC Europe</div>
-                    <div class="channel-freq"><span class="freq-badge">12.149 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.149 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Al Jazeera English</div>
-                    <div class="channel-freq"><span class="freq-badge">12.418 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.418 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">Docubox</div>
-                    <div class="channel-freq"><span class="freq-badge">12.111 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 30000 kS/s • FEC: 3/4</span></div>
+                    <div class="channel-freq">12.111 V 30000 3/4</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">CGTN Documentary HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.418 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.418 V 28000 7/8</div>
                 </div>
                 <div class="channel">
                     <div class="channel-name">CGTN HD</div>
-                    <div class="channel-freq"><span class="freq-badge">12.418 GHz</span><span class="freq-badge">V</span><span class="freq-text">SR: 28000 kS/s • FEC: 7/8</span></div>
+                    <div class="channel-freq">12.418 V 28000 7/8</div>
                 </div>
             </div>
 
@@ -778,59 +718,6 @@
                 <div class="stat-item"><strong>PORNO:</strong> 8</div>
                 <div class="stat-item"><strong>HIREK:</strong> 6</div>
 
-            </div>
-            <h2 style="color: #764ba2; margin-top: 25px; margin-bottom: 12px;">📡 FREKVENCIA LISTA (rendezve)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="text-align: left;">#</th>
-                        <th style="text-align: left;">Frekvencia</th>
-                        <th style="text-align: center;">Pol</th>
-                        <th style="text-align: center;">SR (kS/s)</th>
-                        <th style="text-align: center;">FEC</th>
-                        <th style="text-align: center;">Csatornák</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><strong>1</strong></td><td><strong>11.727 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">8</td></tr>
-                    <tr><td><strong>2</strong></td><td><strong>11.785 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">9</td></tr>
-                    <tr><td><strong>3</strong></td><td><strong>11.823 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">30000</td><td style="text-align: center;">3/4</td><td style="text-align: center;">4</td></tr>
-                    <tr><td><strong>4</strong></td><td><strong>11.900 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">4</td></tr>
-                    <tr><td><strong>5</strong></td><td><strong>11.919 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">11</td></tr>
-                    <tr><td><strong>6</strong></td><td><strong>11.938 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">11</td></tr>
-                    <tr><td><strong>7</strong></td><td><strong>11.958 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">6</td></tr>
-                    <tr><td><strong>8</strong></td><td><strong>11.977 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">3</td></tr>
-                    <tr><td><strong>9</strong></td><td><strong>11.996 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">3</td></tr>
-                    <tr><td><strong>10</strong></td><td><strong>12.034 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">30000</td><td style="text-align: center;">2/3</td><td style="text-align: center;">10</td></tr>
-                    <tr><td><strong>11</strong></td><td><strong>12.073 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">30000</td><td style="text-align: center;">3/4</td><td style="text-align: center;">3</td></tr>
-                    <tr><td><strong>12</strong></td><td><strong>12.111 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">30000</td><td style="text-align: center;">3/4</td><td style="text-align: center;">7</td></tr>
-                    <tr><td><strong>13</strong></td><td><strong>12.130 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">30000</td><td style="text-align: center;">3/4</td><td style="text-align: center;">8</td></tr>
-                    <tr><td><strong>14</strong></td><td><strong>12.149 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">30000</td><td style="text-align: center;">2/3</td><td style="text-align: center;">7</td></tr>
-                    <tr><td><strong>15</strong></td><td><strong>12.187 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">30000</td><td style="text-align: center;">3/4</td><td style="text-align: center;">12</td></tr>
-                    <tr><td><strong>16</strong></td><td><strong>12.226 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">1</td></tr>
-                    <tr><td><strong>17</strong></td><td><strong>12.265 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">27500</td><td style="text-align: center;">3/4</td><td style="text-align: center;">16</td></tr>
-                    <tr><td><strong>18</strong></td><td><strong>12.418 GHz</strong></td><td style="text-align: center;">V</td><td style="text-align: center;">30000</td><td style="text-align: center;">3/4</td><td style="text-align: center;">3</td></tr>
-                    <tr><td><strong>19</strong></td><td><strong>12.687 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">30000</td><td style="text-align: center;">2/3</td><td style="text-align: center;">6</td></tr>
-                    <tr><td><strong>20</strong></td><td><strong>12.723 GHz</strong></td><td style="text-align: center;">H</td><td style="text-align: center;">30000</td><td style="text-align: center;">3/4</td><td style="text-align: center;">4</td></tr>
-                </tbody>
-            </table>
-            <div class="info-box">
-                <h3>📖 Jelmagyarázat</h3>
-                <ul>
-                    <li><strong>Pol:</strong> Polarizáció (H = Horizontális, V = Vertikális)</li>
-                    <li><strong>SR:</strong> Symbol Rate (kilo-szimbólum/másodperc)</li>
-                    <li><strong>FEC:</strong> Forward Error Correction (hibajavítás)</li>
-                </ul>
-            </div>
-            <div class="notes-box">
-                <h3>📝 Megjegyzések</h3>
-                <ul>
-                    <li>A legtöbb transponder <strong>Horizontális (H)</strong> polarizációt használ</li>
-                    <li>Kivétel: <strong>12.418 GHz</strong> Vertikális (V) polarizációjú</li>
-                    <li>Symbol Rate: <strong>27500</strong> vagy <strong>30000</strong> kS/s</li>
-                    <li>FEC: jellemzően <strong>3/4</strong>, ritkábban <strong>2/3</strong></li>
-                    <li>A legnagyobb frekvencia: <strong>12.265 GHz - 16 csatorna</strong></li>
-                </ul>
             </div>
         </div>
     </div>
