@@ -10,7 +10,6 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 8px;
-            min-height: 100vh;
         }
         .container {
             max-width: 1200px;
@@ -31,7 +30,6 @@
         .search-box {
             padding: 8px;
             background: #f8f9fa;
-            border-bottom: 1px solid #e9ecef;
         }
         .search-input {
             width: 100%;
@@ -41,12 +39,11 @@
             border-radius: 5px;
             outline: none;
         }
-        .search-input:focus { border-color: #667eea; }
         .content {
             padding: 8px;
             max-height: calc(100vh - 120px);
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
+            overflow-x: auto;
         }
         .category { margin-bottom: 10px; }
         .category-title {
@@ -64,17 +61,13 @@
             margin-bottom: 2px;
             border-radius: 4px;
             border-left: 3px solid #667eea;
+            font-family: 'Courier New', 'Consolas', monospace;
             font-size: 11px;
             font-weight: 600;
             color: #333;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            white-space: pre;
         }
-        .freq {
-            color: #555;
-            font-weight: 600;
-        }
+        .freq { color: #555; }
         .hidden { display: none; }
         .stats {
             background: #f0f0f0;
@@ -93,20 +86,39 @@
             margin-right: 10px;
             font-size: 10px;
         }
-        .stat-item strong { color: #667eea; }
+        h2 { font-size: 13px; margin-top: 15px; margin-bottom: 8px; color: #764ba2; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+            margin-top: 8px;
+        }
+        thead tr {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th { padding: 6px 3px; border: 1px solid #ddd; }
+        td { padding: 5px 3px; border: 1px solid #ddd; }
+        tbody tr:nth-child(odd) { background: #f8f9fa; }
+        .info-box {
+            margin-top: 10px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-left: 3px solid #667eea;
+            border-radius: 4px;
+        }
+        .info-box h3 { color: #667eea; font-size: 11px; margin-bottom: 5px; }
+        .info-box ul { list-style: none; padding: 0; }
+        .info-box li { font-size: 10px; margin-bottom: 3px; }
         
         @media (min-width: 769px) {
             .header h1 { font-size: 20px; }
-            .channel { font-size: 13px; }
+            .channel { font-size: 12px; }
+            table { font-size: 11px; }
         }
-        
         @media (max-width: 768px) {
             .search-input { font-size: 16px; }
             .channel { font-size: 10px; }
-        }
-        
-        @media (max-width: 400px) {
-            .channel { font-size: 9px; }
         }
     </style>
 </head>
@@ -122,169 +134,169 @@
         <div class="content">
             <div class="category">
                 <div class="category-title">📺 KERESKEDELMI (21)</div>
-                <div class="channel">M1 HD <span class="freq">11.823 H 30000 5/6</span></div>
-                <div class="channel">M2/Petofi TV HD <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">Duna HD <span class="freq">12.149 V 30000 3/4</span></div>
-                <div class="channel">Duna World/M4 Sport+ <span class="freq">11.919 V 28000 7/8</span></div>
-                <div class="channel">TV2 HD <span class="freq">11.823 H 30000 5/6</span></div>
-                <div class="channel">RTL HD <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">RTL KETTO <span class="freq">11.958 V 28000 7/8</span></div>
-                <div class="channel">RTL KETTO HD <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">RTL Harom HD <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">RTL OTTHON <span class="freq">11.996 V 28000 7/8</span></div>
-                <div class="channel">RTL OTTHON HD <span class="freq">12.149 V 30000 3/4</span></div>
-                <div class="channel">Super TV2 <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">TV2Klub <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Cool <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Life TV <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">Viasat 2 <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Viasat3 <span class="freq">11.727 V 28000 7/8</span></div>
-                <div class="channel">Viasat6 <span class="freq">11.727 V 28000 7/8</span></div>
-                <div class="channel">Viasat Film <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Prime <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">TV2 Comedy <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">M1 HD                          <span class="freq">11.823 H 30000 5/6</span></div>
+                <div class="channel">M2/Petofi TV HD                <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">Duna HD                        <span class="freq">12.149 V 30000 3/4</span></div>
+                <div class="channel">Duna World/M4 Sport+           <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">TV2 HD                         <span class="freq">11.823 H 30000 5/6</span></div>
+                <div class="channel">RTL HD                         <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">RTL KETTO                      <span class="freq">11.958 V 28000 7/8</span></div>
+                <div class="channel">RTL KETTO HD                   <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">RTL Harom HD                   <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">RTL OTTHON                     <span class="freq">11.996 V 28000 7/8</span></div>
+                <div class="channel">RTL OTTHON HD                  <span class="freq">12.149 V 30000 3/4</span></div>
+                <div class="channel">Super TV2                      <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">TV2Klub                        <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Cool                           <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Life TV                        <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">Viasat 2                       <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Viasat3                        <span class="freq">11.727 V 28000 7/8</span></div>
+                <div class="channel">Viasat6                        <span class="freq">11.727 V 28000 7/8</span></div>
+                <div class="channel">Viasat Film                    <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Prime                          <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">TV2 Comedy                     <span class="freq">11.919 V 28000 7/8</span></div>
             </div>
 
             <div class="category">
                 <div class="category-title">📺 FILMCSATORNAK (41)</div>
-                <div class="channel">Sorozatklub <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Sorozat+ <span class="freq">11.958 V 28000 7/8</span></div>
-                <div class="channel">Moziklub <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Moziverzum <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">Mozi+ <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">Film+ <span class="freq">11.727 V 28000 7/8</span></div>
-                <div class="channel">Film+ HD <span class="freq">12.111 V 30000 3/4</span></div>
-                <div class="channel">CANAL+ Action HD <span class="freq">12.111 V 30000 3/4</span></div>
-                <div class="channel">Epic Drama HD <span class="freq">11.977 H 30000 3/4</span></div>
-                <div class="channel">HBO HU <span class="freq">11.785 H 28000 7/8</span></div>
-                <div class="channel">HBO Romania <span class="freq">11.900 H 28000 5/6</span></div>
-                <div class="channel">HBO2 <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">HBO 2 <span class="freq">11.785 H 28000 7/8</span></div>
-                <div class="channel">HBO 3 HU <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">HBO 3 RO <span class="freq">12.687 H 27500 3/4</span></div>
-                <div class="channel">Cinemax <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">Cinemax <span class="freq">12.723 H 27500 3/4</span></div>
-                <div class="channel">Cinemax2 <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Magyar Mozi TV <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">AMC HU <span class="freq">11.919 V 28000 7/8</span></div>
-                <div class="channel">AXN CE <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">AXN Black <span class="freq">11.919 V 28000 7/8</span></div>
-                <div class="channel">AXN White <span class="freq">11.919 V 28000 7/8</span></div>
-                <div class="channel">Filmbox Extra HD <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">Filmbox Family <span class="freq">11.727 V 28000 7/8</span></div>
-                <div class="channel">Filmbox Stars <span class="freq">11.919 V 28000 7/8</span></div>
-                <div class="channel">FilmBox Premium <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">FilmBox Basic <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Film Mania <span class="freq">11.996 V 28000 7/8</span></div>
-                <div class="channel">Film Cafe <span class="freq">11.727 V 28000 7/8</span></div>
-                <div class="channel">RTL GOLD <span class="freq">11.958 V 28000 7/8</span></div>
-                <div class="channel">Film 4 <span class="freq">12.130 H 28000 7/8</span></div>
-                <div class="channel">TV4 <span class="freq">11.919 V 28000 7/8</span></div>
-                <div class="channel">Max4 <span class="freq">12.130 H 28000 7/8</span></div>
-                <div class="channel">STORY 4 <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">Galaxy4 <span class="freq">12.130 H 28000 7/8</span></div>
-                <div class="channel">Izaura TV <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">Jocky TV <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">Magyar ATV <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">ATV Extra <span class="freq">11.958 V 28000 7/8</span></div>
-                <div class="channel">Hir TV <span class="freq">12.130 H 28000 7/8</span></div>
+                <div class="channel">Sorozatklub                    <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Sorozat+                       <span class="freq">11.958 V 28000 7/8</span></div>
+                <div class="channel">Moziklub                       <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Moziverzum                     <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">Mozi+                          <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">Film+                          <span class="freq">11.727 V 28000 7/8</span></div>
+                <div class="channel">Film+ HD                       <span class="freq">12.111 V 30000 3/4</span></div>
+                <div class="channel">CANAL+ Action HD               <span class="freq">12.111 V 30000 3/4</span></div>
+                <div class="channel">Epic Drama HD                  <span class="freq">11.977 H 30000 3/4</span></div>
+                <div class="channel">HBO HU                         <span class="freq">11.785 H 28000 7/8</span></div>
+                <div class="channel">HBO Romania                    <span class="freq">11.900 H 28000 5/6</span></div>
+                <div class="channel">HBO2                           <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">HBO 2                          <span class="freq">11.785 H 28000 7/8</span></div>
+                <div class="channel">HBO 3 HU                       <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">HBO 3 RO                       <span class="freq">12.687 H 27500 3/4</span></div>
+                <div class="channel">Cinemax                        <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">Cinemax                        <span class="freq">12.723 H 27500 3/4</span></div>
+                <div class="channel">Cinemax2                       <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Magyar Mozi TV                 <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">AMC HU                         <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">AXN CE                         <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">AXN Black                      <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">AXN White                      <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">Filmbox Extra HD               <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">Filmbox Family                 <span class="freq">11.727 V 28000 7/8</span></div>
+                <div class="channel">Filmbox Stars                  <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">FilmBox Premium                <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">FilmBox Basic                  <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Film Mania                     <span class="freq">11.996 V 28000 7/8</span></div>
+                <div class="channel">Film Cafe                      <span class="freq">11.727 V 28000 7/8</span></div>
+                <div class="channel">RTL GOLD                       <span class="freq">11.958 V 28000 7/8</span></div>
+                <div class="channel">Film 4                         <span class="freq">12.130 H 28000 7/8</span></div>
+                <div class="channel">TV4                            <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">Max4                           <span class="freq">12.130 H 28000 7/8</span></div>
+                <div class="channel">STORY 4                        <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">Galaxy4                        <span class="freq">12.130 H 28000 7/8</span></div>
+                <div class="channel">Izaura TV                      <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">Jocky TV                       <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">Magyar ATV                     <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">ATV Extra                      <span class="freq">11.958 V 28000 7/8</span></div>
+                <div class="channel">Hir TV                         <span class="freq">12.130 H 28000 7/8</span></div>
             </div>
 
             <div class="category">
                 <div class="category-title">📺 TERMESZETFILMEK (22)</div>
-                <div class="channel">ID Investigation Discovery <span class="freq">11.785 H 28000 7/8</span></div>
-                <div class="channel">Discovery HU <span class="freq">11.785 H 28000 7/8</span></div>
-                <div class="channel">Animal Planet <span class="freq">12.130 H 28000 7/8</span></div>
-                <div class="channel">Nat Geo Wild <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">Nat Geo Wild HD <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">Nat Geo HD <span class="freq">12.111 V 30000 3/4</span></div>
-                <div class="channel">BBC Earth HD <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">Love Nature HD <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">History Hungary <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">Viasat History HU <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">Viasat Nature <span class="freq">12.130 H 28000 7/8</span></div>
-                <div class="channel">Viasat Explore <span class="freq">11.785 H 28000 7/8</span></div>
-                <div class="channel">Travel Channel <span class="freq">11.785 H 28000 7/8</span></div>
-                <div class="channel">Spektrum <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">Spektrum Home <span class="freq">11.785 H 28000 7/8</span></div>
-                <div class="channel">HGTV <span class="freq">12.723 H 27500 3/4</span></div>
-                <div class="channel">Ozone TV <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">Fashion TV <span class="freq">11.785 H 28000 7/8</span></div>
-                <div class="channel">TLC <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">TV Paprika <span class="freq">11.727 V 28000 7/8</span></div>
-                <div class="channel">TV2 Sef <span class="freq">11.919 V 28000 7/8</span></div>
-                <div class="channel">Food Network <span class="freq">12.687 H 27500 3/4</span></div>
+                <div class="channel">ID Investigation Discovery     <span class="freq">11.785 H 28000 7/8</span></div>
+                <div class="channel">Discovery HU                   <span class="freq">11.785 H 28000 7/8</span></div>
+                <div class="channel">Animal Planet                  <span class="freq">12.130 H 28000 7/8</span></div>
+                <div class="channel">Nat Geo Wild                   <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">Nat Geo Wild HD                <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">Nat Geo HD                     <span class="freq">12.111 V 30000 3/4</span></div>
+                <div class="channel">BBC Earth HD                   <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">Love Nature HD                 <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">History Hungary                <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">Viasat History HU              <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">Viasat Nature                  <span class="freq">12.130 H 28000 7/8</span></div>
+                <div class="channel">Viasat Explore                 <span class="freq">11.785 H 28000 7/8</span></div>
+                <div class="channel">Travel Channel                 <span class="freq">11.785 H 28000 7/8</span></div>
+                <div class="channel">Spektrum                       <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">Spektrum Home                  <span class="freq">11.785 H 28000 7/8</span></div>
+                <div class="channel">HGTV                           <span class="freq">12.723 H 27500 3/4</span></div>
+                <div class="channel">Ozone TV                       <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">Fashion TV                     <span class="freq">11.785 H 28000 7/8</span></div>
+                <div class="channel">TLC                            <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">TV Paprika                     <span class="freq">11.727 V 28000 7/8</span></div>
+                <div class="channel">TV2 Sef                        <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">Food Network                   <span class="freq">12.687 H 27500 3/4</span></div>
             </div>
 
             <div class="category">
                 <div class="category-title">📺 MESE (13)</div>
-                <div class="channel">DaVinci Learning <span class="freq">12.723 H 27500 3/4</span></div>
-                <div class="channel">ducktv <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">JimJam HU <span class="freq">11.727 V 28000 7/8</span></div>
-                <div class="channel">Minimax <span class="freq">11.785 H 28000 7/8</span></div>
-                <div class="channel">TV2 Kids <span class="freq">11.919 V 28000 7/8</span></div>
-                <div class="channel">Kolyokklub <span class="freq">11.996 V 28000 7/8</span></div>
-                <div class="channel">Kolyokklub HD <span class="freq">12.149 V 30000 3/4</span></div>
-                <div class="channel">Nicktoons Hungary <span class="freq">12.226 V 27500 5/6</span></div>
-                <div class="channel">Nick Junior Hungary <span class="freq">12.226 V 27500 5/6</span></div>
-                <div class="channel">Nickelodeon Hungary <span class="freq">12.226 V 27500 5/6</span></div>
-                <div class="channel">Disney Channel <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">Cartoonito <span class="freq">11.938 H 28000 7/8</span></div>
-                <div class="channel">Cartoon Network <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">DaVinci Learning               <span class="freq">12.723 H 27500 3/4</span></div>
+                <div class="channel">ducktv                         <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">JimJam HU                      <span class="freq">11.727 V 28000 7/8</span></div>
+                <div class="channel">Minimax                        <span class="freq">11.785 H 28000 7/8</span></div>
+                <div class="channel">TV2 Kids                       <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">Kolyokklub                     <span class="freq">11.996 V 28000 7/8</span></div>
+                <div class="channel">Kolyokklub HD                  <span class="freq">12.149 V 30000 3/4</span></div>
+                <div class="channel">Nicktoons Hungary              <span class="freq">12.226 V 27500 5/6</span></div>
+                <div class="channel">Nick Junior Hungary            <span class="freq">12.226 V 27500 5/6</span></div>
+                <div class="channel">Nickelodeon Hungary            <span class="freq">12.226 V 27500 5/6</span></div>
+                <div class="channel">Disney Channel                 <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">Cartoonito                     <span class="freq">11.938 H 28000 7/8</span></div>
+                <div class="channel">Cartoon Network                <span class="freq">11.919 V 28000 7/8</span></div>
             </div>
 
             <div class="category">
                 <div class="category-title">📺 ZENE (8)</div>
-                <div class="channel">Mezzo <span class="freq">12.687 H 27500 3/4</span></div>
-                <div class="channel">Dikh TV <span class="freq">12.130 H 28000 7/8</span></div>
-                <div class="channel">Zenebutik <span class="freq">11.919 V 28000 7/8</span></div>
-                <div class="channel">Slager TV <span class="freq">11.900 H 28000 5/6</span></div>
-                <div class="channel">Muzsika TV <span class="freq">11.958 V 28000 7/8</span></div>
-                <div class="channel">U tv <span class="freq">12.687 H 27500 3/4</span></div>
-                <div class="channel">Music Channel <span class="freq">11.900 H 28000 5/6</span></div>
-                <div class="channel">MTV Europe <span class="freq">12.226 V 27500 5/6</span></div>
+                <div class="channel">Mezzo                          <span class="freq">12.687 H 27500 3/4</span></div>
+                <div class="channel">Dikh TV                        <span class="freq">12.130 H 28000 7/8</span></div>
+                <div class="channel">Zenebutik                      <span class="freq">11.919 V 28000 7/8</span></div>
+                <div class="channel">Slager TV                      <span class="freq">11.900 H 28000 5/6</span></div>
+                <div class="channel">Muzsika TV                     <span class="freq">11.958 V 28000 7/8</span></div>
+                <div class="channel">U tv                           <span class="freq">12.687 H 27500 3/4</span></div>
+                <div class="channel">Music Channel                  <span class="freq">11.900 H 28000 5/6</span></div>
+                <div class="channel">MTV Europe                     <span class="freq">12.226 V 27500 5/6</span></div>
             </div>
 
             <div class="category">
                 <div class="category-title">📺 SPORT (16)</div>
-                <div class="channel">Fishing&Hunting <span class="freq">11.900 H 28000 5/6</span></div>
-                <div class="channel">Spiler 1 <span class="freq">12.130 H 28000 7/8</span></div>
-                <div class="channel">Spiler2 TV <span class="freq">11.727 V 28000 7/8</span></div>
-                <div class="channel">Eurosport 1 HD <span class="freq">11.977 H 30000 3/4</span></div>
-                <div class="channel">Eurosport 2 HD <span class="freq">11.977 H 30000 3/4</span></div>
-                <div class="channel">Sport 1 HD <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">Sport2 HD <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">MATCH4 HD <span class="freq">12.187 V 28000 7/8</span></div>
-                <div class="channel">Arena 4 HD <span class="freq">12.149 V 30000 3/4</span></div>
-                <div class="channel">M4 Sport HD <span class="freq">12.149 V 30000 3/4</span></div>
-                <div class="channel">M5 HD <span class="freq">12.034 V 30000 3/4</span></div>
-                <div class="channel">FightBox <span class="freq">12.111 V 30000 3/4</span></div>
-                <div class="channel">DIGI Sport 1 HD RO <span class="freq">11.823 H 30000 5/6</span></div>
-                <div class="channel">DIGI Sport 2 HD RO <span class="freq">11.823 H 30000 5/6</span></div>
-                <div class="channel">DIGI Sport 3 <span class="freq">12.687 H 27500 3/4</span></div>
-                <div class="channel">DIGI Sport 4 <span class="freq">12.687 H 27500 3/4</span></div>
+                <div class="channel">Fishing&Hunting                <span class="freq">11.900 H 28000 5/6</span></div>
+                <div class="channel">Spiler 1                       <span class="freq">12.130 H 28000 7/8</span></div>
+                <div class="channel">Spiler2 TV                     <span class="freq">11.727 V 28000 7/8</span></div>
+                <div class="channel">Eurosport 1 HD                 <span class="freq">11.977 H 30000 3/4</span></div>
+                <div class="channel">Eurosport 2 HD                 <span class="freq">11.977 H 30000 3/4</span></div>
+                <div class="channel">Sport 1 HD                     <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">Sport2 HD                      <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">MATCH4 HD                      <span class="freq">12.187 V 28000 7/8</span></div>
+                <div class="channel">Arena 4 HD                     <span class="freq">12.149 V 30000 3/4</span></div>
+                <div class="channel">M4 Sport HD                    <span class="freq">12.149 V 30000 3/4</span></div>
+                <div class="channel">M5 HD                          <span class="freq">12.034 V 30000 3/4</span></div>
+                <div class="channel">FightBox                       <span class="freq">12.111 V 30000 3/4</span></div>
+                <div class="channel">DIGI Sport 1 HD RO             <span class="freq">11.823 H 30000 5/6</span></div>
+                <div class="channel">DIGI Sport 2 HD RO             <span class="freq">11.823 H 30000 5/6</span></div>
+                <div class="channel">DIGI Sport 3                   <span class="freq">12.687 H 27500 3/4</span></div>
+                <div class="channel">DIGI Sport 4                   <span class="freq">12.687 H 27500 3/4</span></div>
             </div>
 
             <div class="category">
                 <div class="category-title">📺 PORNO (8)</div>
-                <div class="channel">Blue Hustler <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Hustler TV <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Hustler <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Vixen HD <span class="freq">12.111 V 30000 3/4</span></div>
-                <div class="channel">SuperOne <span class="freq">12.723 H 27500 3/4</span></div>
-                <div class="channel">EroXXX <span class="freq">12.111 V 30000 3/4</span></div>
-                <div class="channel">Private TV <span class="freq">12.265 V 28000 7/8</span></div>
-                <div class="channel">Private TV <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Blue Hustler                   <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Hustler TV                     <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Hustler                        <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Vixen HD                       <span class="freq">12.111 V 30000 3/4</span></div>
+                <div class="channel">SuperOne                       <span class="freq">12.723 H 27500 3/4</span></div>
+                <div class="channel">EroXXX                         <span class="freq">12.111 V 30000 3/4</span></div>
+                <div class="channel">Private TV                     <span class="freq">12.265 V 28000 7/8</span></div>
+                <div class="channel">Private TV                     <span class="freq">12.265 V 28000 7/8</span></div>
             </div>
 
             <div class="category">
                 <div class="category-title">📺 HIREK (6)</div>
-                <div class="channel">CNN <span class="freq">11.958 V 28000 7/8</span></div>
-                <div class="channel">CNBC Europe <span class="freq">12.149 V 30000 3/4</span></div>
-                <div class="channel">Al Jazeera English <span class="freq">12.418 V 28000 7/8</span></div>
-                <div class="channel">Docubox <span class="freq">12.111 V 30000 3/4</span></div>
-                <div class="channel">CGTN Documentary HD <span class="freq">12.418 V 28000 7/8</span></div>
-                <div class="channel">CGTN HD <span class="freq">12.418 V 28000 7/8</span></div>
+                <div class="channel">CNN                            <span class="freq">11.958 V 28000 7/8</span></div>
+                <div class="channel">CNBC Europe                    <span class="freq">12.149 V 30000 3/4</span></div>
+                <div class="channel">Al Jazeera English             <span class="freq">12.418 V 28000 7/8</span></div>
+                <div class="channel">Docubox                        <span class="freq">12.111 V 30000 3/4</span></div>
+                <div class="channel">CGTN Documentary HD            <span class="freq">12.418 V 28000 7/8</span></div>
+                <div class="channel">CGTN HD                        <span class="freq">12.418 V 28000 7/8</span></div>
             </div>
 
 
@@ -300,6 +312,51 @@
                 <div class="stat-item"><strong>HIREK:</strong> 6</div>
 
             </div>
+            
+            <h2>📡 FREKVENCIA LISTA</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Frekvencia</th>
+                        <th>Pol</th>
+                        <th>SR (kS/s)</th>
+                        <th>FEC</th>
+                        <th>Csatornák</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>11.727 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>8</td></tr>
+                    <tr><td>2</td><td>11.785 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>9</td></tr>
+                    <tr><td>3</td><td>11.823 GHz</td><td>H</td><td>30000</td><td>3/4</td><td>4</td></tr>
+                    <tr><td>4</td><td>11.900 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>4</td></tr>
+                    <tr><td>5</td><td>11.919 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>11</td></tr>
+                    <tr><td>6</td><td>11.938 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>11</td></tr>
+                    <tr><td>7</td><td>11.958 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>6</td></tr>
+                    <tr><td>8</td><td>11.977 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>3</td></tr>
+                    <tr><td>9</td><td>11.996 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>3</td></tr>
+                    <tr><td>10</td><td>12.034 GHz</td><td>H</td><td>30000</td><td>2/3</td><td>10</td></tr>
+                    <tr><td>11</td><td>12.073 GHz</td><td>H</td><td>30000</td><td>3/4</td><td>3</td></tr>
+                    <tr><td>12</td><td>12.111 GHz</td><td>H</td><td>30000</td><td>3/4</td><td>7</td></tr>
+                    <tr><td>13</td><td>12.130 GHz</td><td>H</td><td>30000</td><td>3/4</td><td>8</td></tr>
+                    <tr><td>14</td><td>12.149 GHz</td><td>H</td><td>30000</td><td>2/3</td><td>7</td></tr>
+                    <tr><td>15</td><td>12.187 GHz</td><td>H</td><td>30000</td><td>3/4</td><td>12</td></tr>
+                    <tr><td>16</td><td>12.226 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>1</td></tr>
+                    <tr><td>17</td><td>12.265 GHz</td><td>H</td><td>27500</td><td>3/4</td><td>16</td></tr>
+                    <tr><td>18</td><td>12.418 GHz</td><td>V</td><td>30000</td><td>3/4</td><td>3</td></tr>
+                    <tr><td>19</td><td>12.687 GHz</td><td>H</td><td>30000</td><td>2/3</td><td>6</td></tr>
+                    <tr><td>20</td><td>12.723 GHz</td><td>H</td><td>30000</td><td>3/4</td><td>4</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="info-box">
+                <h3>📖 Jelmagyarázat</h3>
+                <ul>
+                    <li><strong>Pol:</strong> Polarizáció (H/V)</li>
+                    <li><strong>SR:</strong> Symbol Rate</li>
+                    <li><strong>FEC:</strong> Hibajavítás</li>
+                </ul>
+            </div>
         </div>
     </div>
     <script>
@@ -311,19 +368,14 @@
                 const channels = category.querySelectorAll('.channel');
                 let visibleCount = 0;
                 channels.forEach(channel => {
-                    const text = channel.textContent.toLowerCase();
-                    if (text.includes(searchTerm)) {
+                    if (channel.textContent.toLowerCase().includes(searchTerm)) {
                         channel.classList.remove('hidden');
                         visibleCount++;
                     } else {
                         channel.classList.add('hidden');
                     }
                 });
-                if (visibleCount === 0) {
-                    category.classList.add('hidden');
-                } else {
-                    category.classList.remove('hidden');
-                }
+                category.style.display = visibleCount === 0 ? 'none' : 'block';
             });
         });
     </script>
